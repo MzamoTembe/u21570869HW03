@@ -29,7 +29,7 @@
             <div class="card h-100">
                 <a id="video" href="@Url.Content("~/Media/Videos/" + @file.FileName)">
                     <video width="320" height="240">
-                        @*Video types supported*@
+                        Video types supported
                         <source src="@Url.Content("~/Media/Videos/" + @file.FileName)" alt="body" type="video/mp4">
                         <source src="@Url.Content("~/Media/Videos/" + @file.FileName)" alt="body" type="video/mov">
                         <source src="@Url.Content("~/Media/Videos/" + @file.FileName)" alt="body" type="video/avi">
@@ -38,8 +38,8 @@
                         Your browser does not support this video file.
                     </video>
                 </a>
-                @*I thought it would be better this way for the videos*@
-                @*<video width="320" height="240" controls>
+                @*I thought it would be better this way for the videos
+                <video width="320" height="240" controls>
                     <source src="@Url.Content("~/Media/Videos/" + @file.FileName)" alt="body" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>*@
