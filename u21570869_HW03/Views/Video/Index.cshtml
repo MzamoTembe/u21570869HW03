@@ -1,0 +1,71 @@
+﻿@using u21570869_HW03.Models
+@model IEnumerable<u21570869_HW03.Models.FileModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div>
+            <h2>
+                Videos
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            This is a list of all of the Videos that you uploaded onto server.
+        </div>
+    </div>
+</div>
+
+<div class="container" style="background-color: lightgray;">
+    <br />
+    @foreach (FileModel file in Model)
+    {
+        <div class="col-xs-12 col-sm-6 col-md-4" style="padding-bottom: 30px;">
+            <div class="card h-100">
+                <a id="video" href="@Url.Content("~/Media/Videos/" + @file.FileName)">
+                    <video width="320" height="240">
+                        @*Video types supported*@
+                        <source src="@Url.Content("~/Media/Videos/" + @file.FileName)" alt="body" type="video/mp4">
+                        <source src="@Url.Content("~/Media/Videos/" + @file.FileName)" alt="body" type="video/mov">
+                        <source src="@Url.Content("~/Media/Videos/" + @file.FileName)" alt="body" type="video/avi">
+                        <source src="@Url.Content("~/Media/Videos/" + @file.FileName)" alt="body" type="video/mkv">
+                        <source src="@Url.Content("~/Media/Videos/" + @file.FileName)" alt="body" type="video/mpeg">
+                        Your browser does not support this video file.
+                    </video>
+                </a>
+                @*I thought it would be better this way for the videos*@
+                @*<video width="320" height="240" controls>
+                    <source src="@Url.Content("~/Media/Videos/" + @file.FileName)" alt="body" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>*@
+                <div class="card-body">
+                    @*File Name*@
+                    <h5 class="card-title"> @file.FileName </h5>
+                    @*Download/Delete Buttons*@
+                    <button type="button" class="btn btn-success">
+                        @Html.ActionLink("Download", "Download",
+                         new { video = file.FileName })
+                    </button>
+                    <button type="button" class="btn btn-danger">
+                        @Html.ActionLink("Delete", "Delete",
+                       new { video = file.FileName })
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@*JQeury for selecting the images*@
+<script>
+
+    $(document).ready(function () {
+        $("a#video").fancybox().click();
+    });
+
+</script>

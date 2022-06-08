@@ -1,0 +1,100 @@
+﻿ @using u21570869_HW03.Models
+@model IEnumerable<u21570869_HW03.Models.FileModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container">
+    <div class="row">
+        <div>
+            <h1>
+                Upload/Download Demo 
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            A demo by Mzamo Shange
+        </div>
+    </div>
+</div>
+
+@*Basic Information*@
+<div class="container" style="background-color: lightgray;">
+    <div class="row">
+        <div class="col-lg-8">
+            <h3>
+                Description
+            </h3>
+            <br />
+            <p>
+                This is a demo that was made by me in my second year in college.
+                <br />
+                <br />
+                This is a demo to demonstrate my abilities to upload implemnt the logic for uploading and download files on a Server. This demo also displays the files from the server to the view. This is all done with the ASP.Net Framework (MVC).
+                <br /> 
+                <br />
+                This demo forms part of many demos that I have made so far in college, meaning these are beginner-intermediary projects. In the next few months or so when I learn about Entity Frameworks (databases) and Front-End Frameworks (Angular), I will then begin to build more advanced demos.
+            </p>
+        </div>
+        <div class="col-lg-4">
+            <div>
+                <h3>
+                    Option Selection
+                </h3>
+                @*Form that encoddes the data from form so that users may send/post the files via the form*@
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <table>
+                        <tr>
+                            <td>
+                                @Html.RadioButton("option", "Document")
+                                <label for="rbtDocument"> Document </label>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.RadioButton("option", "Image")
+                                <label for="rbtImage"> Image </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.RadioButton("option", "Video")
+                                <label for="rbtVideo"> Video </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="file" name="files">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Submit">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+</div>

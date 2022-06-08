@@ -1,0 +1,61 @@
+﻿@using u21570869_HW03.Models
+@model IEnumerable<u21570869_HW03.Models.FileModel>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div>
+            <h2>
+                Files
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            This is a list of all of the Files that you uploaded onto server.
+        </div>
+    </div>
+</div>
+
+<div class="container" style="background-color: lightgray;">
+
+
+
+
+@*Bootstrap classes*@
+<div class="table-responsive-xs">
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr style="background-color: black; color:white;">
+                <th scope="col">File Name</th>
+                <th scope="col">Download File</th>
+                <th scope="col">Delete File</th>
+            </tr>
+        </thead>
+        @foreach (FileModel file in Model)
+        {
+            <tr style="background-color: white; color:black;">
+                <td>@file.FileName</td>
+                <td>
+                    <button type="button" class="btn btn-success">
+                        @Html.ActionLink("Download", "Download",
+                         new { document = file.FileName })
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger">
+                        @Html.ActionLink("Delete", "Delete",
+                       new { document = file.FileName })
+                    </button>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+</div>
+
